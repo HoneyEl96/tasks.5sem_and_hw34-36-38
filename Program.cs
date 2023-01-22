@@ -202,8 +202,6 @@
 // }
 // Console.WriteLine("Количество четных элементов: " + count);
 
-// как я могу сделать эту же вариацию кода, добавив туда сравнение с элементом bool, где я посчитаю кол-во true?
-
 // Задача 36: Задайте массив, заполненный случайными числами. 
 // Найдите сумму элементов, стоящих на нечётных позициях.
 // [3, 7, 23, 12] -> 19
@@ -212,108 +210,32 @@
 // Сделать цикл с обходом проверки на четность(начать с начать с первого элемента массива и прибавлять по 2)
 // складывать поэтапно эти элементы
 
-// int[] FillRandMass(int[] mass)
-// {
-// for(int i = 0; i < mass.Length; i++)
-// {
-// mass[i] = new Random().Next(-70, 81); // случайные числа
-// }
-// return mass;
-// }
+int[] FillRandMass(int[] mass)
+{
+for(int i = 0; i < mass.Length; i++)
+{
+mass[i] = new Random().Next(-70, 81); // случайные числа
+}
+return mass;
+}
 
-// Console.Write("Введите размер массива: ");
-// int dlina = Convert.ToInt32(Console.ReadLine()); // вводим переменную длины
-// int[] mass = new int [dlina]; // создаем массив по введенной ранее длине
-// FillRandMass(mass); 
-// Console.Write("Ваш случайный массив: ");
-// Console.WriteLine(string.Join(", ", mass));
+Console.Write("Введите размер массива: ");
+int dlina = Convert.ToInt32(Console.ReadLine()); // вводим переменную длины
+int[] mass = new int [dlina]; // создаем массив по введенной ранее длине
+FillRandMass(mass); 
+Console.Write("Ваш случайный массив: ");
+Console.WriteLine(string.Join(", ", mass));
 
-// int sum = 0;
-// // int elem = 0;
-// for (int i = 1; i < mass.Length; i+=2) // начинаем с 1 элемента и прибавляем по 2
-// {
-//     // elem = mass[i];
-//     sum += mass[i];
-// }
-// // Console.WriteLine("Элементы на нечетных позициях: ");
-// // Console.WriteLine(" ", elem);
-// // Console.Write(" Их сумма = " + sum);
-// Console.WriteLine("Сумма элементов на неченых позициях = " + sum);
+int sum = 0;
+int elem = 0;
+for (int i = 1; i < mass.Length; i+=2) // начинаем с 1 элемента и прибавляем по 2
+{
+    elem = mass[i];
+    sum += mass[i];
+}
+Console.WriteLine("Элементы на неченых позициях: ");
+Console.WriteLine(" ", elem);
+Console.Write(" Их сумма = " + sum);
 
-// как я мог бы сначала вывести эти элементы(неченые) чтобы было удобно их проверить, а потом уже написать ответ?
-// я закоммитил элементы моего решения, но он не мне принтит эти элементы, которые счет нечетными(((
-
-// Задача 38: Задайте массив вещественных(double) чисел. 
-// Найдите разницу между максимальным и минимальным элементов массива.
+// Задача 38: Задайте массив вещественных(double) чисел. Найдите разницу между максимальным и минимальным элементов массива.
 // [3.7 7.2 2.1 7.8] -> 5.7 // вывод тоже вещественным числом
-
-// Math.Round(переменная, цифры после запятой) - округление числа
-// найти минимальное, записать в переменную 
-// найти максимальное, исключив минимальное из поиска, записать в переменную 
-// из переменной max вычесть min, в новую переменную raznica
-
-// метод на генерацию double random
-// честно позаимстованный метод генератор рандомных числе в тип double с моими комментариями
-// double[] FillRandMass_Double(double[] mass)
-// {
-// for(int i = 0; i < mass.Length; i++)
-// {
-// // mass[i] = Convert.ToDouble (new Random().Next(0,100) / 10); // чтоб десятичную дробь получить
-// mass[i] = Math.Round (Convert.ToDouble (new Random().NextDouble()) + (new Random().Next(0,10)),1); // Math.Round чтоб округлить
-// // new Random().NextDouble() - генерит числа от 0.0 до 0.9, потому + new Random().Next(0,10)
-// }
-// return mass;
-// }
-
-// Console.WriteLine("Введите длину массива: ");
-// int dlina = Convert.ToInt32(Console.ReadLine()); // целочисленное кол-во элементов
-// double [] mass = new double [dlina];
-// FillRandMass_Double(mass);
-// Console.Write("Ваш случайный массив: ");
-// Console.WriteLine(string.Join(", ", mass));
-
-// в чате подсказали очень интересный способ ввода с клавиатуры, без рандомайзера, через метод)))
-double[] FillArrayByKeyBoard(double[] mass)
-{
-    Console.WriteLine("Введите через 'enter' числа (до 100) в массив, по примеру 86 = 8,6");
-    for (int i = 0; i < mass.Length; i++)
-    {
-        mass[i] = Convert.ToDouble(Console.ReadLine())/10;
-    }
-    return mass;
-}
-Console.Write("Введите длину массива: ");
-int dlina = Convert.ToInt32(Console.ReadLine());
-double[] mass = new double[dlina];
-FillArrayByKeyBoard(mass);
-Console.WriteLine("Итоговый массив: " + string.Join(", ", mass)); // ('[' + string.Join(", ", mass) + ']');
-// double min = double.MinValue; // метод из с# на поиск мин
-// double max = double.MaxValue; // метод из с# на поиск макс
-// эти методы почему-то работают наоборот, почему???
-
-double min = 1000; // ругался на min, до того, как я назначил его больше всех в диапазоне
-double max = 0.1;
-double raznica =  0;
-for (int i = 0; i < mass.Length; i++)
-{
-if (min > mass[i])
-    {
-    min = mass[i];
-    }
-if (max < mass[i])
-    {
-    max = mass[i];
-    }
-
-}
-raznica = max - min;
-Console.WriteLine("Минимальный элемент = " + Math.Round (min, 1) + " " + "Максмальный элемент = " + Math.Round (max, 1));
-Console.WriteLine("Разница = " + Math.Round (raznica, 1));
-
-// Console.WriteLine("Введите число элементов массива: ");
-// int dlina = Convert.ToInt32(Console.ReadLine());
-// double[] array = new double [dlina];
-// Console.WriteLine("Введите числа с запятой, через пробел ");
-// double mass = Convert.ToDouble(Console.ReadLine());
-// double sum = mass[0] + mass[1];
-
