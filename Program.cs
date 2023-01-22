@@ -287,6 +287,7 @@ int dlina = Convert.ToInt32(Console.ReadLine());
 double[] mass = new double[dlina];
 FillArrayByKeyBoard(mass);
 Console.WriteLine("Итоговый массив: " + string.Join(", ", mass)); // ('[' + string.Join(", ", mass) + ']');
+
 // double min = double.MinValue; // метод из с# на поиск мин
 // double max = double.MaxValue; // метод из с# на поиск макс
 // эти методы почему-то работают наоборот, почему???
@@ -309,11 +310,3 @@ if (max < mass[i])
 raznica = max - min;
 Console.WriteLine("Минимальный элемент = " + Math.Round (min, 1) + " " + "Максмальный элемент = " + Math.Round (max, 1));
 Console.WriteLine("Разница = " + Math.Round (raznica, 1));
-
-// Console.WriteLine("Введите число элементов массива: ");
-// int dlina = Convert.ToInt32(Console.ReadLine());
-// double[] array = new double [dlina];
-// Console.WriteLine("Введите числа с запятой, через пробел ");
-// double mass = Convert.ToDouble(Console.ReadLine());
-// double sum = mass[0] + mass[1];
-
